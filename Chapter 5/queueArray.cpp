@@ -1,0 +1,70 @@
+// queue array test (singular)
+#include "queue.hpp"
+int main(){
+    arrayqueueS<string> texts(10);
+    texts.insert("hey");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("what");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("the");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("fuck");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("was");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("that");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("man");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("are");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("you");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("crazy?");
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    texts.insert("how?"); // queue overflow
+    cout << " just added (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " is queue full: " << (texts.isFull() ? "yes\n" : "no\n");
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " max queue capacity: " << texts.maxSize() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " insertingR \"after crazy\" \n";
+    texts.insert("after crazy");
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " just removed: " << texts.remove() << endl;  // queue underflow
+    cout << " text (F, R): " << texts.peekF() << ", " << texts.peekR() << endl;
+    cout << " current queue size: " << texts.size() << endl;
+    cout << " is queue empty? " << (texts.isEmpty() ? "yes\n" : "no\n");
+}
