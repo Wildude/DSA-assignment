@@ -60,6 +60,9 @@ int main(){
         studentArray[i] = new Bnode<student>({tailnode->id, NULL, NULL});
         tailnode = tailnode->prev;
     }
+    for(int i = 0; i < listsize; i++){
+        deleteDnode(studentList);
+    }
     int root = makeBST(studentArray, listsize);
     Bnode<student>* rootnode = studentArray[root];
     delete studentArray;
@@ -70,9 +73,7 @@ int main(){
     student temp("", "", keyid, 1);
     Bnode<student>* retkey = searchBST(rootnode, temp);
     cout <<" Search for student with ID: " << keyid << (retkey ? " success\n": " failed\n");
-    if(retkey){
-        cout << retkey->id << endl;
-    }
+    if(retkey)cout << retkey->id << endl;
     cout << " would you like to continue (n for no): ";
     char c;
     cin >> c;
