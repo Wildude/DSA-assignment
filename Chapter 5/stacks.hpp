@@ -56,7 +56,7 @@ class arraystack{
     }
 };
 template <class T>
-class nodestack{
+class nodestackS{
     Lnode<T>* head = NULL;
     Lnode<T>* top = NULL;
     public:
@@ -77,6 +77,37 @@ class nodestack{
         return popped;
     }
     Lnode<T>* peek() const{  // accessor function: so as to not affect the top node using this function
+        return top;
+    }
+    int size(){
+        return getSize(top);
+    }
+    bool isEmpty(){
+        return !top;
+    }
+};
+template <class T>
+class nodestackD{
+    Bnode<T>* head = NULL;
+    Bnode<T>* top = NULL;
+    public:
+    void push(Bnode<T>* node){
+        insertSnode(head, node);
+        top = head;
+    }
+    Bnode<T>* pop(){
+        if(!top){
+            cout << " Stack Underflow\a\n";
+            return NULL;
+        }
+        static Bnode<T>* popped = new Bnode<T>();
+        delete popped;
+        popped = new Bnode<T>({head->id, head->next});
+        deleteSnode(head);
+        top = head;
+        return popped;
+    }
+    Bnode<T>* peek() const{  // accessor function: so as to not affect the top node using this function
         return top;
     }
     int size(){

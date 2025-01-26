@@ -69,22 +69,22 @@ void displayD(T* Node, ostream& os = cout){
     }
 }
 template <class T>
-void displayDF(T* Node, fstream& os){
+void displayDF(T* Node, fstream& ofs){
     if(Node){
-        os << " ========================================\n";
-        os << " have node: " << Node << "\n";
-        os << " with id: " << Node->id << "\n pointing to (prev, next): ";
-        if(Node->prev)os << Node->prev;
-        else os << "NULL";
-        os << ", ";
-        if(Node->next)os << Node->next << endl;
-        else os << "NULL\n";
-        os << " ========================================\n";
+        ofs << " ========================================\n";
+        ofs << " have node: " << Node << "\n";
+        ofs << " with id: " << Node->id << "\n pointing to (prev, next): ";
+        if(Node->prev)ofs << Node->prev;
+        else ofs << "NULL";
+        ofs << ", ";
+        if(Node->next)ofs << Node->next << endl;
+        else ofs << "NULL\n";
+        ofs << " ========================================\n";
     }
     else{
-        os << " ========================================\n";
-        os << " have node: NULL\n";
-        os << " ========================================\n";
+        ofs << " ========================================\n";
+        ofs << " have node: NULL\n";
+        ofs << " ========================================\n";
     }
 }
 // displays all nodes of a doubly/circular linked list
@@ -258,8 +258,8 @@ void deleteSnode(T*& head, int index = 0){
     delete temp; // freeing memory
 }
 // simple searching for singly/doubly/circular linked list (forward traversal only)
-template <class T>
-T* search(T* head, string id){
+template <class T, class F>
+T* searchNodeP(T* head, F id){
     T* curr = head;
     if(!curr){cout << " linked list is empty\a\n";return NULL;}
     while(true){
@@ -268,8 +268,23 @@ T* search(T* head, string id){
         else if(curr->next == head)break; // for circular linked lists
         else curr = curr->next; // traversing
     }
-    cout << " couldn't find id: " << id << "\a\n";
     return NULL;
+}
+template <class T, class F>
+int searchNodeI(T* head, F id){
+    T* curr = head;
+    if(!curr){cout << " linked list is empty\a\n";return -2;}
+    int counter = 0;
+    while(true){
+        if(!curr)break; // for non-circular linked lists 
+        else if(curr->id == id)return counter; // checks match for id and returns or not
+        else if(curr->next == head)break; // for circular linked lists
+        else{
+            curr = curr->next; // traversing
+            counter++;
+        } 
+    }
+    return -1;
 }
 // insertion for a doubly linked list at a location
 template <class T>

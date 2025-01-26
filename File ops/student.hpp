@@ -7,45 +7,10 @@ class student{
     string lastname;
     string id;
     ushort level;
-    void fixID(){
-        id[0] = toupper(id[0]);
-        id[1] = toupper(id[1]);
-        id[2] = toupper(id[2]);
-    }
-    bool checkID(){
-        if(id.length() != 11 || id.find('/') != 3 || id.find_last_of('/') != 8){
-            cout << " Invalid ID: " << id << "\a\n";
-            return false;
-        }
-        string gradtype = id.substr(0, 3);
-        string numberID = id.substr(4, 4);
-        string yearJoined = id.substr(9, 2);
-        for(int i = 0; i < 3; i++){
-            if(!isalpha(gradtype[i])){
-                cout << " Invalid ID: " << id << "\a\n";
-                return false;
-            }
-        }
-        for(int i = 0; i < 4; i++){
-            if(!isdigit(numberID[i])){
-                cout << " Invalid ID: " << id << "\a\n";
-                return false;
-            }
-        }
-        if(!isdigit(yearJoined[0]) || !isdigit(yearJoined[1])){
-            cout << " Invalid ID: " << id << "\a\n";
-            return false;
-        }
-        // cout << " ID valid: " << id << endl;
-        return true;
-    }
     public:
-    student(){
-
-    }
-    student(string fname, string lname, string Id, ushort lvl) : 
-    firstname(fname), lastname(lname), id(Id), level(lvl){
-        //checkID();
+    student(){}
+    student(string fname, string lname, string Id, ushort lvl){
+        edit(fname, lname, Id, lvl);
     }
     bool edit(string fname, string lname, string Id, ushort lvl){
         firstname = fname;
@@ -96,3 +61,4 @@ istream& operator>>(istream& in, student& stud){
     stud.edit(temp_fname, temp_lname, ID, year);
     return in;
 }
+

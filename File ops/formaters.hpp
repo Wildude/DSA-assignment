@@ -1,3 +1,6 @@
+#include <iostream>
+#include <fstream>
+#include <cmath>
 using namespace std;
 void printchar(int n, char c = ' '){
     for(int i = 0; i < n; i++)

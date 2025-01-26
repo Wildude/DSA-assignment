@@ -1,3 +1,4 @@
+#include <fstream>
 using namespace std;
 template <class T>
 struct array{
@@ -26,6 +27,16 @@ void sort(T** list, int size){
         for(int j = 0; j < size; j++){
             if(list[0][i] < list[0][j]){
                 swap(list[0][i], list[0][j]);
+            }
+        }
+    }
+}
+template <class T>
+void sortNode(T** list, int size){
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size; j++){
+            if(list[i]->id < list[j]->id){
+                swap(list[i], list[j]);
             }
         }
     }

@@ -2,7 +2,6 @@
 #include "../Chapter 6/trees.hpp"
 #include "../File ops/arrays.hpp"
 int main(){
-    /*
     Bnode<student>* studentList = NULL;
     int count = 0;
     cout << " ==================================================================================\n";
@@ -35,26 +34,11 @@ int main(){
     cout << " ==================================================================================\n";
     DisplayD(studentList);
     cout << " ==================================================================================\n";
-    */
     string filename;
     cout << " Enter filename to store the list: ";
     cin >> filename;
     string path = "../Data/" + filename;
-    ifstream filein(path);
-    fstream file;
-    if(filein){
-        cout << " File already exists: \n";
-        cout << " Do you want to overwrite (y for yes): ";
-        char c;
-        cin >> c;
-        if(c == 'y' or toupper(c) == 'Y'){
-            filein.close();
-            file.open(path, ios::trunc|ios::out);
-        }
-        else file.open(path, ios::out|ios::in);
-    }
-    else file.open(path, ios::out|ios::trunc);
-    /*
+    ofstream file(path);
     int listsize = getSize(studentList);
     Bnode<student>** studentsArray = new Bnode<student>*[listsize];
     for(int i = 0; i < listsize; i++){
@@ -63,20 +47,9 @@ int main(){
         setNextNode(studentList);
         delete temp;
     }
-    */
-    Bnode<int>** intArr = new Bnode<int>*[15];
-    for(int i = 0; i < 15; i++){
-        intArr[i] = new Bnode<int>({i, NULL, NULL});
+    sortNode(studentsArray, listsize);
+    for(int i = 0; i < listsize; i++){
+        file << " " << i + 1 << ": ";
+        file << studentsArray[i]->id << endl;
     }
-    int rooter = makeBST(intArr, 15);
-    /*
-    sortB(studentsArray, listsize);
-    int rootindex = makeBST(studentsArray, listsize);
-    Bnode<student>* root = studentsArray[rootindex];
-    delete studentsArray;
-    */
-    cout << " inordered display:\n";
-    int left = 0, right = 0;
-    inorder(intArr[rooter], file, left, right);
-    cout << " Left, right: " << left << ", " << right << endl;
 }

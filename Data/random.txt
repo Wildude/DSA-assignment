@@ -1,0 +1,35 @@
+ 1:  Student details: 
+ Name: A D
+ ID: 1
+ Level: 5
+
+ 2:  Student details: 
+ Name: A X
+ ID: 2
+ Level: 5
+
+ 3:  Student details: 
+ Name: g x
+ ID: 3
+ Level: 6
+
+ 4:  Student details: 
+ Name: Y B
+ ID: 4
+ Level: 6
+
+ 5:  Student details: 
+ Name: F D
+ ID: 5
+ Level: 4
+
+ 6:  Student details: 
+ Name: X M
+ ID: 6
+ Level: 1
+
+ 7:  Student details: 
+ Name: P O
+ ID: 7
+ Level: 2
+

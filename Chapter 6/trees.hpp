@@ -28,7 +28,7 @@ void inorder(Bnode<T>* node, ostream& out = cout){
     inorder(node->next);
 }
 template <class T>
-void inorder(Bnode<T>* node, fstream& ofs){
+void inorderF(Bnode<T>* node, fstream& ofs){
     if(!node)return;
     inorder(node->prev);
     displayDF(node, ofs);
@@ -79,25 +79,21 @@ int makeBST(Bnode<T>**& list, int size){
         add *= 2;
     }
 }
-template <class T>
-Bnode<T>* searchBST(Bnode<T>* tree, T key){
+template <class T, class F>
+Bnode<T>* searchBST(Bnode<T>* tree, F key){
     return (tree ? (tree->id == key ? tree : (tree->id > key ? searchBST(tree->prev, key) : searchBST(tree->next, key))) : NULL);
 }
 template <class T>
-Bnode<T>* sortedArrayToBST(Bnode<T>** list, int start, int end) {
-    if (start > end) return nullptr;
-
-    int mid = (start + end) / 2;
-    Bnode<T>* root = list[mid];
-
-    root->prev = sortedArrayToBST(list, start, mid - 1);
-    root->next = sortedArrayToBST(list, mid + 1, end);
-
-    return root;
+void inorderstack(nodestackD<T>& stack, Bnode<T>* tree){
+    if(!tree)return;
+    inorderstack(stack, tree->prev);
+    stack.push(tree);
+    inorderstack(stack, tree->next);
 }
-
 template <class T>
-Bnode<T>* A_BST(Bnode<T>** list, int size) {
-    if (!list || size == 0) return nullptr;
-    return sortedArrayToBST(list, 0, size - 1);
+void inorderqueue(nodedeque<T>& deque, Bnode<T>* tree){
+    if(!tree)return;
+    deque.insertF(tree);
+    inorderqueue(deque, tree->prev);
+    inorderqueue(deque, tree->next);
 }
